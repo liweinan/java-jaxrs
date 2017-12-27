@@ -22,6 +22,7 @@ public class JerseyConfig extends ResourceConfig {
     public JerseyConfig(Tracer tracer) {
         Client client = ClientBuilder.newClient();
         client.register(new Builder(tracer).build());
+        packages("io.opentracing.contrib.jaxrs2.example.spring.boot");
 
         register(new ServerTracingDynamicFeature.Builder(tracer)
                 .build());
